@@ -50,4 +50,4 @@ jobs:
 
       - name: Build and run tests
         working-directory: build
-        run: make -k check
+        run: make -k

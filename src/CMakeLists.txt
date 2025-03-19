@@ -1,16 +1,13 @@
 # SPDX-FileCopyrightText: 2006-2025 Knut Reinert & Freie Universität Berlin
 # SPDX-FileCopyrightText: 2016-2025 Knut Reinert & MPI für molekulare Genetik
-# SPDX-License-Identifier: CC0-1.0
+# SPDX-License-Identifier: BSD-3-Clause
 
 cmake_minimum_required (VERSION 3.25)
 
 # An object library (without main) to be used in multiple targets.
 # You can add more external include paths of other projects that are needed for your project.
-add_library (minimal_hibf_lib STATIC fastq_conversion.cpp)
-target_include_directories (minimal_hibf_lib PUBLIC "${minimal_hibf_SOURCE_DIR}/include")
-target_link_libraries (minimal_hibf_lib PUBLIC seqan3::seqan3 sharg::sharg seqan::hibf
-                                                    fmindex-collection::fmindex-collection
-)
+add_library (minimal_hibf_lib STATIC run.cpp build.cpp search.cpp)
+target_link_libraries (minimal_hibf_lib PUBLIC sharg::sharg seqan::hibf)
 
 target_compile_options (minimal_hibf_lib PUBLIC "-pedantic" "-Wall" "-Wextra")
 

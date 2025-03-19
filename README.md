@@ -55,78 +55,25 @@ SPDX-License-Identifier: CC0-1.0
 -->
 [4]: https://codecov.io/gh/eseiler/minimal_hibf
 
-This is a template for C++ app developers.
-You can easily use this template and modify the existing code to suit your needs.
-It provides an elementary CMake set-up, some useful SeqAn libraries, and an example application.
+# Build
 
-For requirements, check the [Software section of the SeqAn3 Quick Setup](https://docs.seqan.de/seqan3/main_user/setup.html#autotoc_md109).
+```bash
+git clone https://github.com/eseiler/minimal_hibf
+cd minimal_hibf
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j
+```
 
-## Instructions for App Developers:
+# Use
 
-If you want to build an app, do the following:
+```bash
+# Inside build directory
 
-0. You need to be signed in with a **GitHub account**.
-1. Press the `Use this template`-Button to create your own repository. See [GitHub's documentation](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) for more information.
-2. **Wait** for GitHub actions to create a commit in your new repository. The commit message will be `Initialise repository` and it will replace placeholders in the code. Afterwards, the README in your repository will be customised to your repository, among other things.
-3. **Clone** your repository locally: `git clone git@github.com:eseiler/minimal_hibf.git`
-4. <details><summary>Build and test the app (example) </summary>
-    In your local repository clone, you can do the following to build and test your app:
+# IBF with 256 bins and 10000 random elements each
+./minimal_hibf build --output index --element 10000 --bins 256 --threads 2
 
-    ```bash
-    mkdir build        # create build directory
-    cd build           # step into build directory
-    cmake ..           # call cmake on the repository
-    make               # build the app minimal_hibf
-    make check         # build and run tests
-    ./bin/minimal_hibf # Execute the app (prints a short help page)
-    ```
-   </details>
-
-## Setting up Codecov (optional)
-
-1. Go to https://codecov.io/gh/eseiler/minimal_hibf.
-2. Sign in with your GitHub account.
-3. Go to https://app.codecov.io/gh/eseiler/minimal_hibf/config/general.<br>
-   If the repository cannot be found, go to https://app.codecov.io/gh/eseiler and click `Resync`.<br>
-   Then try again.
-4. Copy the `Repository Upload Token`.
-5. Go to https://github.com/eseiler/minimal_hibf/settings/secrets/actions.
-6. Add a `New repository secret` with the name `CODECOV_TOKEN` and the value of the `Repository Upload Token`.
-7. Done! The next push to your repository will create a Codecov report.
-
-## Setting up permissions for Lint action (optional)
-
-1. Go to https://github.com/eseiler/minimal_hibf/settings/actions.
-2. Under `Workflow permissions`, at the very bottom, tick `Allow GitHub Actions to create and approve pull requests` and click `Save`.
-3. You can go to https://github.com/eseiler/minimal_hibf/actions/workflows/lint.yml and click `Run workflow` to run linting.
-
-## Instructions for SeqAn3 Tutorial Purposes:
-
-If you just some quick hands-on experience with SeqAn Libraries, you can also just clone this repository and start editing the `src/main.cpp` file.
-
-### Adding a new cpp file
-
-If you want to add a new cpp file (e.g., `tutorial1.cpp`) that is compiled and linked with the current infrastructure, do the following:
-
-1. Create a new file `tutorial1.cpp` in the `src/` directory.
-   <details><summary>The file content could look like this:</summary>
-
-   ```cpp
-   #include <seqan3/core/debug_stream.hpp>
-
-   int main()
-   {
-       seqan3::debug_stream << "Hello, World!" << std::endl;
-   }
-   ```
-   </details>
-2. Add the following lines at the bottom of `src/CMakeLists.txt`
-    ```cmake
-    # Add another cpp file.
-    add_executable (tutorial01 tutorial01.cpp)
-    target_link_libraries (tutorial01 PRIVATE "minimal_hibf_lib")
-    ```
-3. Go to the build directory `cd build`
-4. Refresh CMake `cmake .`
-5. Build your new cpp file `make tutorial01`
-6. Execute your new binary with `./tutorial01`
+# Query a single query of 5000 random elements. This is done 100 times inside a parallel for loop.
+./minimal_hibf search --input index --elements 5000 --queries 100 --threads 2
+```

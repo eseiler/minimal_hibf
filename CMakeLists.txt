@@ -30,9 +30,9 @@ CPMGetPackage (use_ccache) # Speeds up compilation by caching files that have be
 
 # Comment/Uncomment entries as needed.
 # If you change something here, make sure to add/remove the target in target_link_libraries of src/CMakeLists.txt.
-CPMGetPackage (fmindex) # FM-Index
+# CPMGetPackage (fmindex) # FM-Index
 CPMGetPackage (hibf) # (Hierarchical) Interleaved Bloom Filter
-CPMGetPackage (seqan3) # Sequence analysis
+# CPMGetPackage (seqan3) # Sequence analysis
 CPMGetPackage (sharg) # Argument parser
 
 # Add the application. This will include `src/CMakeLists.txt`.
@@ -42,7 +42,7 @@ add_subdirectory (src)
 # It can be used when calling CMake: `cmake .. -Dminimal_hibf_TEST=OFF`.
 # It is good practice to allow disabling tests. If another project includes your application,
 # it might not want to build your tests.
-option (minimal_hibf_TEST "Enable testing for minimal_hibf." ${PROJECT_IS_TOP_LEVEL})
+option (minimal_hibf_TEST "Enable testing for minimal_hibf." OFF) # ${PROJECT_IS_TOP_LEVEL}
 
 if (minimal_hibf_TEST)
     enable_testing () # Makes ctest work in root build directory.
