@@ -72,7 +72,7 @@ make -j
 # Inside build directory
 
 # IBF with 256 bins and 10000 random elements each
-./minimal_hibf build --output index --element 10000 --bins 256 --threads 2
+./minimal_hibf build --output index --elements 10000 --bins 256 --threads 2
 
 # Query a single query of 5000 random elements. This is done 100 times inside a parallel for loop.
 ./minimal_hibf search --input index --elements 5000 --queries 100 --threads 2
