@@ -8,7 +8,7 @@
 # cmake-format: off
 
 # hibf
-set (HIBF_VERSION 8fb4898ea734c904277ccfb2402184b1cf058b91 CACHE STRING "" FORCE)
+set (HIBF_VERSION a78290006b7f945076ed3d286ad2dbc59879d797 CACHE STRING "" FORCE)
 CPMDeclarePackage (hibf
                    NAME hibf
                    GIT_TAG ${HIBF_VERSION} # main
@@ -19,7 +19,7 @@ CPMDeclarePackage (hibf
 )
 
 # sharg
-set (SHARG_VERSION c81c1f858054c7114d4d0e82c1c5c2d78574cb5e CACHE STRING "" FORCE)
+set (SHARG_VERSION 6cea71a882314f24c746b54f42db1da9e5d06a8f CACHE STRING "" FORCE)
 CPMDeclarePackage (sharg
                    NAME sharg
                    GIT_TAG ${SHARG_VERSION} # main
@@ -30,7 +30,7 @@ CPMDeclarePackage (sharg
 )
 
 # seqan3
-set (SEQAN3_VERSION 2863cbbe336a51c21932c69635e814b6e3a8a4ce CACHE STRING "" FORCE)
+set (SEQAN3_VERSION 9dd371e69567e102659a39f5c027fcc980bdadef CACHE STRING "" FORCE)
 CPMDeclarePackage (seqan3
                    NAME seqan3
                    GIT_TAG ${SEQAN3_VERSION} # main
@@ -41,7 +41,7 @@ CPMDeclarePackage (seqan3
 )
 
 # fmindex
-set (FMINDEX_VERSION c887ee77d62d889dd687c3281fffc99f1aec69e2 CACHE STRING "" FORCE)
+set (FMINDEX_VERSION 7f2834e4884983d21c62c38093e56fe1f38805b5 CACHE STRING "" FORCE)
 CPMDeclarePackage (fmindex
                    NAME fmindex
                    GIT_TAG ${FMINDEX_VERSION} # main
@@ -52,7 +52,7 @@ CPMDeclarePackage (fmindex
 )
 
 # googletest
-set (GOOGLETEST_VERSION 1.16.0 CACHE STRING "" FORCE)
+set (GOOGLETEST_VERSION 1.17.0 CACHE STRING "" FORCE)
 CPMDeclarePackage (googletest
                    NAME GTest
                    VERSION ${GOOGLETEST_VERSION}
